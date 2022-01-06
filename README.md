@@ -25,7 +25,7 @@ To install it:
 3. `./NavierStokes-2D-ChanelFlow`
 
 ## Results
-Once the program has been run, a file called results.csv will be generated
+Once the program has been run, a file called NS_RESULTS.csv will be generated
 with the solution. For visualization, ParaView is a good choice. 
 ParaView: https://www.paraview.org/.
 ParaView Tutorial: https://www.paraview.org/Wiki/images/b/bc/ParaViewTutorial56.pdf.
