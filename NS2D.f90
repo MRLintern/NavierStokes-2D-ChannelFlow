@@ -2,8 +2,6 @@
 ! Finite Volume Method is used
 ! The System of Equations is solved using the Successive Over-Relaxation (SOR) Method
 ! A good method for faster convergence
-
-! Need to comment/uncomment certain statements to change problem type
       
       PROGRAM NAVIERSTOKES
 
