@@ -14,7 +14,7 @@ You may need to install this:
 
 
 ## Compiler
-The compiler used for this software is gfortran: (https://gcc.gnu.org/fortran/).
+The compiler used for this software is gfortran: [Get the gcc compiler from GNU](https://gcc.gnu.org/fortran/).
 To install it: 
 1. Updates: `sudo apt-get update`
 2. Install: `sudo apt-get install gfortran-9`
