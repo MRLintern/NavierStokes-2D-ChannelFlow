@@ -26,6 +26,6 @@ To install it:
 
 ## Results
 Once the program has been run, a file called NS_RESULTS.csv will be generated
-with the solution. For visualization,[ParaView](https://www.paraview.org/) is a good choice.
+with the solution. For visualization, [ParaView](https://www.paraview.org/) is a good choice.
 If you need help go to [ParaView Tutorial](https://www.paraview.org/Wiki/images/b/bc/ParaViewTutorial56.pdf).
 If you don't want to run the program, NS_RESULTS.csv is already included.
