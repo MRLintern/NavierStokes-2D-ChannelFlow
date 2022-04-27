@@ -1,6 +1,6 @@
 ## 2D Navier-Stokes Equations Solver for 2D Chanel Flow
-This code solves the 2D Navier-Stokes using the Finite Volume Method
-in a 2D Cartesian System.
+This code solves the 2D Navier-Stokes equations.
+The equations are discretized using the finite volume method.
 The System of Equations is solved using the Successive Over-Relaxation (SOR) Method
 
 ## Operating System
