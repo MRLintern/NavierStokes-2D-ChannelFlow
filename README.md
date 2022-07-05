@@ -20,7 +20,7 @@ To install it:
 2. Install: `$ sudo apt-get install gfortran-9`
 
 ## Instructions
-1. Clone the repository: `https://github.com/MRLintern/NavierStokes-2D-ChanelFlow.git`
+1. Clone the repository: `$ git clone https://github.com/MRLintern/NavierStokes-2D-ChanelFlow.git`
 2. `$ make`
 3. `$./NavierStokes-2D-ChanelFlow`
 
