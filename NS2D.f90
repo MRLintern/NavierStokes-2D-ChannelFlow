@@ -6,12 +6,12 @@
       PROGRAM NAVIERSTOKES
 
         implicit none
+        
         integer, parameter :: nx=31, ny=31
         integer :: i,j,iter,outeriter,outeriterations
-        real :: dx,dy,xmax,ymax,rho,mu,omegau,omegav,omegap,error,total, &
-                xx,yy,velmag,min,mout
-        real, dimension(0:nx+1,0:ny+1) :: u,v,p,uold,vold,pp, &
-                       uu,vv,pressure,apu,apv,app,source,ae,aw,an,as
+        
+        real :: dx,dy,xmax,ymax,rho,mu,omegau,omegav,omegap,error,total,xx,yy,velmag,min,mout
+        real, dimension(0:nx+1,0:ny+1) :: u,v,p,uold,vold,pp,uu,vv,pressure,apu,apv,app,source,ae,aw,an,as
   
   !     set fluid properties
         mu=0.01 !viscosity
@@ -51,24 +51,18 @@
   !     set x-momentum equation coefficients
         do i=2,nx
             do j=1,ny
-                ae(i,j)=max(-0.5*rho*dy*(uold(i+1,j)+ &
-                           uold(i,j)),0.)+mu*dy/dx
-                aw(i,j)=max( 0.5*rho*dy*(uold(i-1,j)+ &
-                          uold(i,j)),0.)+mu*dy/dx
-                an(i,j)=max(-0.5*rho*dx*(vold(i,j+1)+ &
-                           vold(i-1,j+1)),0.0)+mu*dx/dy
-                as(i,j)=max( 0.5*rho*dx*(vold(i,j)+ &
-                           vold(i-1,j)),0.0)+mu*dx/dy
+                ae(i,j)=max(-0.5*rho*dy*(uold(i+1,j)+uold(i,j)),0.)+mu*dy/dx
+                aw(i,j)=max( 0.5*rho*dy*(uold(i-1,j)+ uold(i,j)),0.)+mu*dy/dx
+                an(i,j)=max(-0.5*rho*dx*(vold(i,j+1)+vold(i-1,j+1)),0.0)+mu*dx/dy
+                as(i,j)=max( 0.5*rho*dx*(vold(i,j)+vold(i-1,j)),0.0)+mu*dx/dy
             end do
         end do
   
   !     overwrite boundary coefficients along north/south walls with half cell (dy) size
         do i=2,nx
-            an(i,ny)=max(-0.5*rho*dx*(vold(i,ny+1)+ &
-                           vold(i-1,ny+1)),0.0)+mu*dx/(dy/2.)
+            an(i,ny)=max(-0.5*rho*dx*(vold(i,ny+1)+vold(i-1,ny+1)),0.0)+mu*dx/(dy/2.)
        
-            as(i,1)=max( 0.5*rho*dx*(vold(i,1)+ &
-                           vold(i-1,1)),0.0)+mu*dx/(dy/2.)
+            as(i,1)=max( 0.5*rho*dx*(vold(i,1)+vold(i-1,1)),0.0)+mu*dx/(dy/2.)
         end do
   
         apu=ae+aw+an+as
@@ -83,12 +77,7 @@
         do iter=1,10
             do i=2,nx
                 do j=1,ny
-                    u(i,j)=(1.-omegau)*uold(i,j)+1./apu(i,j)*( &
-                        ae(i,j)*u(i+1,j)+ &
-                        aw(i,j)*u(i-1,j)+ &
-                        an(i,j)*u(i,j+1)+ &
-                        as(i,j)*u(i,j-1)+ &
-                        dy*(p(i-1,j)-p(i,j)))
+                    u(i,j)=(1.-omegau)*uold(i,j)+1./apu(i,j)*(ae(i,j)*u(i+1,j)+aw(i,j)*u(i-1,j)+an(i,j)*u(i,j+1)+as(i,j)*u(i,j-1)+dy*(p(i-1,j)-p(i,j)))
                 end do
             end do
         end do
@@ -114,24 +103,18 @@
   
         do i=1,nx
             do j=2,ny
-                ae(i,j)=max(-0.5*rho*dy*(uold(i+1,j)+ &
-                           uold(i+1,j-1)),0.)+mu*dy/dx
-                aw(i,j)=max( 0.5*rho*dy*(uold(i,j-1)+ &
-                           uold(i,j)),0.)+mu*dy/dx
+                ae(i,j)=max(-0.5*rho*dy*(uold(i+1,j)+uold(i+1,j-1)),0.)+mu*dy/dx
+                aw(i,j)=max( 0.5*rho*dy*(uold(i,j-1)+uold(i,j)),0.)+mu*dy/dx
   
-                an(i,j)=max(-0.5*rho*dx*(vold(i,j+1)+ &
-                           vold(i,j)),0.)+mu*dx/dy
-                as(i,j)=max( 0.5*rho*dx*(vold(i,j-1)+ &
-                           vold(i,j)),0.)+mu*dx/dy
+                an(i,j)=max(-0.5*rho*dx*(vold(i,j+1)+vold(i,j)),0.)+mu*dx/dy
+                as(i,j)=max( 0.5*rho*dx*(vold(i,j-1)+vold(i,j)),0.)+mu*dx/dy
             end do
         end do
   
   !     overwrite boundary coefficients along east/west walls due to half cell (dx) size
         do j=2,ny
-          ae(nx,j)=max(-0.5*rho*dy*(uold(nx+1,j)+ &
-                           uold(nx+1,j-1)),0.)+mu*dy/(dx/2.0)
-          aw(1,j)=max( 0.5*rho*dy*(uold(1,j-1)+ &
-                           uold(1,j)),0.)+mu*dy/(dx/2.0)
+          ae(nx,j)=max(-0.5*rho*dy*(uold(nx+1,j)+uold(nx+1,j-1)),0.)+mu*dy/(dx/2.0)
+          aw(1,j)=max( 0.5*rho*dy*(uold(1,j-1)+uold(1,j)),0.)+mu*dy/(dx/2.0)
         end do
         
         apv=ae+aw+an+as
@@ -144,12 +127,7 @@
         do iter=1,10
             do i=1,nx
                 do j=2,ny
-                    v(i,j)=(1.-omegav)*vold(i,j)+1./apv(i,j)*( &
-                        ae(i,j)*v(i+1,j)+ &
-                        aw(i,j)*v(i-1,j)+ &
-                        an(i,j)*v(i,j+1)+ &
-                        as(i,j)*v(i,j-1)+ &
-                        dx*(p(i,j-1)-p(i,j)))
+                    v(i,j)=(1.-omegav)*vold(i,j)+1./apv(i,j)*(ae(i,j)*v(i+1,j)+aw(i,j)*v(i-1,j)+an(i,j)*v(i,j+1)+as(i,j)*v(i,j-1)+dx*(p(i,j-1)-p(i,j)))
                 end do
             end do
         end do
@@ -183,8 +161,7 @@
   !     compute the mass source term
         do i=1,nx
             do j=1,ny
-                source(i,j)=rho*dy*(u(i+1,j)-u(i,j)) + &
-                          rho*dx*(v(i,j+1)-v(i,j))
+                source(i,j)=rho*dy*(u(i+1,j)-u(i,j))+rho*dx*(v(i,j+1)-v(i,j))
             end do
         end do
 
@@ -197,12 +174,7 @@
         do iter=1,100
             do j=1,ny
                 do i=1,nx
-                    pp(i,j)=pp(i,j)+1.7/app(i,j)*( &
-                        ae(i,j)*pp(i+1,j)+ &
-                        aw(i,j)*pp(i-1,j)+ &
-                        an(i,j)*pp(i,j+1)+ &
-                        as(i,j)*pp(i,j-1)- &
-                        source(i,j)-pp(i,j)*app(i,j))
+                    pp(i,j)=pp(i,j)+1.7/app(i,j)*(ae(i,j)*pp(i+1,j)+aw(i,j)*pp(i-1,j)+an(i,j)*pp(i,j+1)+as(i,j)*pp(i,j-1)-source(i,j)-pp(i,j)*app(i,j))
                 end do
             end do
         end do
@@ -219,8 +191,7 @@
   !     Apply corrections to u velocity
         do i=2,nx
             do j=1,ny
-                u(i,j)=u(i,j)+dy/apu(i,j)* &
-                     (pp(i-1,j)-pp(i,j))
+                u(i,j)=u(i,j)+dy/apu(i,j)*(pp(i-1,j)-pp(i,j))
             end do
         end do
         
@@ -228,8 +199,7 @@
   !     Apply corrections to v velocity
         do i=1,nx
             do j=2,ny
-                v(i,j)=v(i,j)+dx/apv(i,j)* &
-                     (pp(i,j-1)-pp(i,j))
+                v(i,j)=v(i,j)+dx/apv(i,j)*(pp(i,j-1)-pp(i,j))
             end do
         end do
         
@@ -242,8 +212,7 @@
   !     conserved after corrections
         do i=1,nx
             do j=1,ny
-                source(i,j)=rho*dy*(u(i+1,j)-u(i,j)) + &
-                          rho*dx*(v(i,j+1)-v(i,j))
+                source(i,j)=rho*dy*(u(i+1,j)-u(i,j))+rho*dx*(v(i,j+1)-v(i,j))
             end do
         end do
   
