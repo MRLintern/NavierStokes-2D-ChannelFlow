@@ -1,7 +1,7 @@
 ! Navier Stokes Equation Solver for 2D Channel flow
 ! Finite Volume Method is used
 ! The System of Equations is solved using the Successive Over-Relaxation (SOR) Method
-! A good method for faster convergence
+
       
       PROGRAM NAVIERSTOKES
 
