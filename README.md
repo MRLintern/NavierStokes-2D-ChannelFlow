@@ -1,5 +1,3 @@
-## TODO
-Source file: `NS2D.f90`. Length of some lines of code are too long; reduce to enable compilation. 
 
 ## 2D Navier-Stokes Equations Solver for 2D Chanel Flow
 This code solves the Navier-Stokes Equations for 2D Open Chanel Flow.
