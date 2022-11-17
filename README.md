@@ -8,7 +8,7 @@ The Resulting System of Algebraic Equations is solved using the Successive Over-
 `Ubuntu 20.04`.
 
 ## Make
-This project uses `make` to generate the executable: [Get Make from the GNU Project](https://www.gnu.org/software/make/).
+This project uses `make` to generate the executable: [Get make from the GNU Project](https://www.gnu.org/software/make/).
 You may need to install this: 
 1. Updates: `$ sudo apt-get update`
 2. Install: `$ sudo apt-get install make`
