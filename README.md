@@ -30,5 +30,4 @@ Once the program has been run, a file called `RESULTS.dat` will be generated
 with the solution. For visualization, [ParaView](https://www.paraview.org/) is a good choice.
 If you need help go to [ParaView Tutorial](https://www.paraview.org/Wiki/images/b/bc/ParaViewTutorial56.pdf).
 If you don't want to run the program, `RESULTS.dat` is included.
-The original source code generated the solution to a .csv file, called `NS_RESULTS.csv` which is still available.
-If you want to run the program and generated a .csv file, replace the file extension from .dat to .csv.
+
