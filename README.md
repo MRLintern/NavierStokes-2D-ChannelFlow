@@ -33,4 +33,4 @@ If you don't want to run the program, `RESULTS.dat` is included.
 
 ## TODO
 
-Tried running the application again some time away; problems reported so these will have to be fixed ASAP.
+Tried running the application again after some time away; problems r.e. saving output data; to be fixed ASAP.
