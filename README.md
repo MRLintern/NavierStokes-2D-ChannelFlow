@@ -31,3 +31,6 @@ with the solution. For visualization, [ParaView](https://www.paraview.org/) is a
 If you need help go to [ParaView Tutorial](https://www.paraview.org/Wiki/images/b/bc/ParaViewTutorial56.pdf).
 If you don't want to run the program, `RESULTS.dat` is included.
 
+## TODO
+
+Tried running the application again some time away; problems reported so these will have to be fixed ASAP.
