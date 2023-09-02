@@ -1,5 +1,5 @@
 
-## 2D Navier-Stokes Equations Solver for 2D Chanel Flow
+## 2D Navier-Stokes Equations Solver for 2D Channel Flow
 This code solves the Navier-Stokes Equations for 2D Open Channel Flow.
 The equations are discretized using the finite volume method.
 The Resulting System of Algebraic Equations is solved using the Successive Over-Relaxation (SOR) Method
