@@ -30,6 +30,7 @@ Once the program has been run, a file called `RESULTS.dat` will be generated
 with the solution. For visualization, [ParaView](https://www.paraview.org/) is a good choice.
 If you need help go to [ParaView Tutorial](https://www.paraview.org/Wiki/images/b/bc/ParaViewTutorial56.pdf).
 If you don't want to run the program, `RESULTS.dat` is included.
+You can save the output data to CSV instead; change it in the source file. I've used CSV files for **ParaView**; never checked if dat files can be used but they probably can be. 
 
 ## TODO
 
