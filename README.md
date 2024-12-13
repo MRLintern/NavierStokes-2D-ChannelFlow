@@ -35,3 +35,4 @@ You can save the output data to CSV instead; change it in the source file. I've 
 ## TODO
 
 Tried running the application again after some time away; problems r.e. saving output data; to be fixed.
+Employ OOP.
